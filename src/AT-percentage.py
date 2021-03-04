@@ -5,7 +5,7 @@ VERSION
         1.0
 
 AUTHOR
-        
+	Riqui Papi Puig, La pulga joder!!!!!!        
 
 DESCRIPTION
         Calculate percentage of AT on a genome sequence
