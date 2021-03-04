@@ -6,7 +6,7 @@ VERSION
     1.0
     
 AUTHOR
-	Dembegod en el track
+	Dembegod en el track, Muerto Lenglet in tha house
     
 DESCRIPTION
 	Make the reverse complement of DNA sequence
