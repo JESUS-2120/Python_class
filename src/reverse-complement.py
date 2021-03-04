@@ -22,5 +22,7 @@ USAGE
     
     % python reverse-complement -i
 
+Hola, solo quiero actualizar y despues restaurar a esto
+
 '''
 
