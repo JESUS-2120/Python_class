@@ -1,6 +1,6 @@
 '''
 NAME
-	reverse-complement.py
+	reverse-complement.py  -i sequence.txt
     
 VERSION
     1.0
