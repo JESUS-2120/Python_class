@@ -6,7 +6,7 @@ VERSION
     1.0
     
 AUTHOR
-	
+	El mero crack, siuuuuu dijo el cerreciete	
     
 DESCRIPTION
 	Make the reverse complement of DNA sequence
