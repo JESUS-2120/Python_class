@@ -20,7 +20,7 @@ USAGE
     example
     
     % python AT-percentage.py -i sequence.txt
-Asociando ando        
+        
 '''
 
 
