@@ -31,4 +31,4 @@ La finalidad de este repositorio es automatizar el control de versiones de los p
 + Autor: 
   Victor Jesús Enriquez Castro
 + Medio de contacto:
-  [victorec@lcg.unam.mx]
+  victorec@lcg.unam.mx
