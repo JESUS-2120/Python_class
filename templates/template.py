@@ -1,5 +1,6 @@
 '''NAME
-        Template generico
+        Template generico 
+        ej. AT-percentage
 
 VERSION
         1.0
@@ -8,10 +9,12 @@ AUTHOR
         Victor Jesus Enriquez Castro
 
 DESCRIPTION
-        Inserte descripcion del programa
+        Inserte descripcion del programa 
+        ej. Calculate percentage of AT on a genome sequence 
 
 CATEGORY
-        Inserte categoria ej. Genomic Sequence
+        Inserte categoria 
+        ej. Genomic Sequence
 
 USAGE   
         ej.
