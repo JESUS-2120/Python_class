@@ -1,27 +1,35 @@
-'''NAME
-        Template generico 
-        ej. AT-percentage
-
-VERSION
-        1.0
-
+'''
+NAME
+        [name]
+        
+VERSION 
+        [#.#]
+	
 AUTHOR
-        Victor Jesus Enriquez Castro
-
+        [Full name] <[username]@gmail.com>
+        [Other authors]: [Modifications]
+        
 DESCRIPTION
-        Inserte descripcion del programa 
-        ej. Calculate percentage of AT on a genome sequence 
-
+        [description]
+        
 CATEGORY
-        Inserte categoria 
-        ej. Genomic Sequence
-
-USAGE   
-        ej.
-        % python AT-percentage.py -i filename
-
-        example
-
-        % python AT-percentage.py -i sequence.txt
+        [category]
+        
+USAGE
+        [program name][options]
+        
+ARGUMENTS
+        [name]  [description]
+        [name]  [description]
+        [name]  [description]
+        
+INPUT
+        [files or directories used to run the program and formats]
+        
+OUTPUT
+        [file names and formats]
+      
+EXAMPLES
+        [Example 1: Describe the example, input and output]
 
 '''
