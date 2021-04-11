@@ -10,7 +10,8 @@ AUTHOR
 
 DESCRIPTION
         Este programa recibe como entrada una secuencia de ADN e indica el codon
-        de inicio y la secuencia que se empezará a transcribir,
+        de inicio y la secuencia que se empezará a transcribir, asi como la posicion 
+        de la ultima base del codon de paro (ATT, ATC, ACT)
 
 CATEGORY
         Genomic-Sequence
@@ -28,8 +29,8 @@ EXAMPLES
 
     Output
     El codon TAC empieza en la posicion  5  y el codon de paro termina en la posicion 61
-    La secuencia de mRNA:
-    AUGUGGAGGCGUGGGGUGGGACAGGGUCGGUGGAGGUGCGACCCGGCUCGACGCUGA
+    La secuencia de RNA:
+    UACACCUCCGCACCCCACCCUGUCCCAGCCACCUCCACGCUGGGCCGAGCUGCGACU
 '''
 
 print('Bienvenido a su programa de busqueda de codon incial y secuencia transcrita')
@@ -46,15 +47,11 @@ if(posicion_final < 0):
 posicion_final += 3
 
 ORF = DNA[posicion_inicio:posicion_final]
-dna = 'ATCG'
-rna = 'UAGC'
-cambio_mRNA = str.maketrans(dna,rna)
-str = ORF
-mRNA = str.translate(cambio_mRNA)
+mRNA = ORF.replace('T','U')
 
 if(posicion_inicio == 0):
      print('No hay una secuencia codificante en la secuencia introducida')
-     print('No existe un mRNA')
+     print('No existe un codon de inicio para hacer un RNA')
 else:
      print('El codon de inicio comienza en la posicion: ', posicion_inicio + 1,' y termina en la posicion: ', posicion_final)    
      print('La secuencia del mRNA es: \n' + mRNA)
