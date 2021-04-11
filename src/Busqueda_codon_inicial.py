@@ -52,5 +52,9 @@ cambio_mRNA = str.maketrans(dna,rna)
 str = ORF
 mRNA = str.translate(cambio_mRNA)
 
-print('El codon de inicio comienza en la posicion: ', posicion_inicio + 1,' y termina en la posicion: ', posicion_final)
-print('La secuencia del mRNA es: \n' + mRNA)
+if(posicion_inicio = 0):
+     print('No hay una secuencia codificante en la secuencia introducida')
+     print('No existe un mRNA')
+else:
+     print('El codon de inicio comienza en la posicion: ', posicion_inicio + 1,' y termina en la posicion: ', posicion_final)    
+     print('La secuencia del mRNA es: \n' + mRNA)
