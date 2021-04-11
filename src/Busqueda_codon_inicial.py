@@ -24,12 +24,12 @@ OUTPUT
 
 EXAMPLES
     Input
-     ADN = 'AAGGTACGTCGCGCGTTATTAGCCTAAT'
+     ADN = 'AAAATACACCTCCGCACCCCACCCTGTCCCAGCCACCTCCACGCTGGGCCGAGCTGCGACTTTACTCTGCTCCGCGACTTTTT'
 
     Output
-    El codon TAC empieza en la posicion  4  y termina en  26
-    Fragmento de RNA que será transcrito:
-    UACGUCGCGCGUUAUUAGCC
+    El codon TAC empieza en la posicion  5  y el codon de paro termina en la posicion 61
+    La secuencia de mRNA:
+    AUGUGGAGGCGUGGGGUGGGACAGGGUCGGUGGAGGUGCGACCCGGCUCGACGCUGA
 '''
 
 print('Bienvenido a su programa de busqueda de codon incial y secuencia transcrita')
@@ -37,7 +37,7 @@ print('Introdusca una secuencia de  DNA (A, G, C, T) que contenga un codon de in
 
 DNA = input()
 
-posicion_inicio = DNA.find('TAC') + 1
+posicion_inicio = DNA.find('TAC')
 posicion_final = DNA.find('ATT')
 if(posicion_final < 0):
     posicion_final = DNA.find('ATC')
@@ -52,5 +52,5 @@ cambio_mRNA = str.maketrans(dna,rna)
 str = ORF
 mRNA = str.translate(cambio_mRNA)
 
-print('El codon de inicio comienza en la posicion: ', posicion_inicio,' y termina en la posicion: ', posicion_final)
+print('El codon de inicio comienza en la posicion: ', posicion_inicio + 1,' y termina en la posicion: ', posicion_final)
 print('La secuencia del mRNA es: \n' + mRNA)
