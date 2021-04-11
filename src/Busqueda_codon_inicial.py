@@ -52,7 +52,7 @@ cambio_mRNA = str.maketrans(dna,rna)
 str = ORF
 mRNA = str.translate(cambio_mRNA)
 
-if(posicion_inicio = 0):
+if(posicion_inicio == 0):
      print('No hay una secuencia codificante en la secuencia introducida')
      print('No existe un mRNA')
 else:
