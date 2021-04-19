@@ -8,6 +8,9 @@ VERSION
 AUTHOR
         Victor Jesus Enriquez Castro <victorec@lcg.unam.mx>
 
+GitHub
+        https://github.com/JESUS-2120/Python_class/blob/master/src/contenido_ATCG.py
+
 DESCRIPTION
         Dada una secuencia de DNA (AGCT) este programa calcula el contenido de cada una de las bases dentro
         de la secuencia introducida por el usuario.
