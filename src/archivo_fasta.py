@@ -8,6 +8,9 @@ VERSION
 AUTHOR
         Victor Jesus Enriquez Castro <victorec@lcg.unam.mx>
 
+GitHub
+        https://github.com/JESUS-2120/Python_class/blob/master/src/archivo_fasta.py
+
 DESCRIPTION
         Este programa crean un archivo fasta a partir de la secuencia de DNA
         que esta en 4_dna_sequences.txt ubicado en la carpeta data/
