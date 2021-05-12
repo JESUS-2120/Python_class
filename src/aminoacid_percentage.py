@@ -42,6 +42,7 @@ EXAMPLES
         65.0%
 
 GITHUB
+        https://github.com/JESUS-2120/Python_class/blob/master/src/aminoacid_percentage.py
 
 '''
 
