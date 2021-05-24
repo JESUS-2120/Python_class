@@ -56,6 +56,9 @@ EXAMPLES
         > ACTGACACTGTACTGTACATGTG
         52.0%
 Github:
+https://github.com/JESUS-2120/Python_class/blob/master/src/Contenido_de_AT.py	
+
+
 
 '''
 
