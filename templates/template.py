@@ -29,6 +29,17 @@ INPUT
 OUTPUT
         [file names and formats]
       
+FUNCIONES
+	    [Lista con nombre de las funciones en el codigo]
+	    <Nombre de la funcion>(argumentos):
+		
+		    [codigo asociado]
+		    return(valor que regresa)
+
+MANEJO DE ERRORES (TRY)
+	    [error]  [Como se corrige]
+	    [ej. "No se puede abrir el archivo"   "Revisa la ruta y existencia del archivo"]
+
 EXAMPLES
         [Example 1: Describe the example, input and output]
 
