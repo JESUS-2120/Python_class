@@ -9,68 +9,73 @@ AUTHOR
         Victor Jesus Enriquez Castro <victorec@lcg.unam.mx>
 
 DESCRIPTION
-        Este programa lee un archivo de secuencias de DNA y retorna como output un
-        archivo que contenga el contenido de AT para cada secuencia.
+
+        Compute the AT content of a DNA sequences
 
 CATEGORY
         Genomic sequence
 
 ARGUMENTS
-        -i,--input  Ruta del archivo que se utilizara como input, debe contener una secuancia de DNA
-        -o,--output  Ruta del archivo que se retornara como output
+        -i #, --input=#   read sequence from # (must be in ... format)
+        -o #, --output=#  output results to #
+                              if not specified, the standard output is used
 
-INPUT
-        Archivo txt que contiene secuencias de DNA con el siguiente formato:
-        seq_1 = "ATCGTACGATCGATCGATCGCTAGACGTATCG"
-        seq_2 = "actgatcgacgatcgatcgatcacgact"
-        seq_3 = "ACTGAC-ACTGT—ACTGTA----CATGTG"
-        seq_4 = "ATTCTGNNNNNNNNNNNNNGTC"
+INPUT FILE FORMAT
+        The input file has the next format:
+                seq_1 = "ATCGTACGATCGATCGATCGCTAGACGTATCG"
+                seq_2 = "actgatcgacgatcgatcgatcacgact"
+                seq_3 = "ACTGAC-ACTGT—ACTGTA----CATGTG"
+                seq_4 = "ATTCTGNNNNNNNNNNNNNGTC"
 
-OUTPUT
-        Archivo txt que contiene las secuencias de DNA con su correspondiente contenido de AT con el
-        siguiente formato:
-        El contenido de AT de las secuencias en su archivo input es:
-        > ATCGTACGATCGATCGATCGCTAGACGTATCG
-        47.0%
-        > ACTGATCGACGATCGATCGATCACGACT
-        47.0%
-        > ACTGACACTGTACTGTACATGTG
-        52.0%
+OUTPUT FILE
+
+        Formato fastA incluye el contenido de AT
+
+        > seq_1 at:47.0%
+        ATCGTACGATCGATCGATCGCTAGACGTATCG
+        > seq_2 at:47.0%
+        ACTGATCGACGATCGATCGATCACGACT
+        > seq_3 at:52.0%
+        ACTGACACTGTACTGTACATGTG
+        
+USAGE
+        Contenido_de_AT.py -i inputfile [-o outputfile]
+
 
 EXAMPLES
-        Terminal:
-        python3 PycharmProjects/Python_class/src/Contenido_de_AT.py
-        --input PycharmProjects/Python_class/data/4_dna_sequences.txt
 
-        Input:
+        % python3  Contenido_de_AT.p -i 4_dna_sequences.txt
+
+        InputFile Content:
         seq_1 = "ATCGTACGATCGATCGATCGCTAGACGTATCG"
         seq_2 = "actgatcgacgatcgatcgatcacgact"
         seq_3 = "ACTGAC-ACTGT-ACTGTA----CATGTG"
 
         Output:
-        El contenido de AT de las secuencias en su archivo input es:
-        > ATCGTACGATCGATCGATCGCTAGACGTATCG
-        47.0%
-        > ACTGATCGACGATCGATCGATCACGACT
-        47.0%
-        > ACTGACACTGTACTGTACATGTG
-        52.0%
+        > seq_1 at:47.0%
+        ATCGTACGATCGATCGATCGCTAGACGTATCG
+        > seq_2 at:47.0%
+        ACTGATCGACGATCGATCGATCACGACT
+        > seq_3 at:52.0%
+        ACTGACACTGTACTGTACATGTG
+
 Github:
-https://github.com/JESUS-2120/Python_class/blob/master/src/Contenido_de_AT.py	
-
-
+https://github.com/JESUS-2120/Python_class/blob/master/src/Contenido_de_AT.py
 
 '''
 
-#Importamos las librerias necesarias para recibir los argumentos en la terminal
+########################################
+# IMPORTS
+########################################
 import argparse
 import sys
 import os
 
-#Creamos el parser
+########################################
+# COMMAND LINE OPTIONS
+########################################
 parser = argparse.ArgumentParser(description="Programa que calcula la secuencia de AT de una secuencia")
 
-#Anadimos los argumentos en este caso --input y --output
 parser.add_argument("-i", "--input",
                     metavar="Ruta del archivo input",
                     type=str,
@@ -81,79 +86,81 @@ parser.add_argument("-o", "--output",
                     metavar="Ruta del archivo output",
                     type=str,
                     help="Archivo que guardara el contenido de AT de la secuencia input",
+                    default="contenido_at_output.txt",
                     required=False)
 
-#Definimos una funcion que determine el contenido de AT para cada secuencia que recibe como parametro
-# y retornamos el contenido de AT
-def get_at_content(seq):
+########################################
+# FUNCTIONS
+########################################
+class AmbiguousBaseError(Exception):
+    '''
+    Catch de raise error and Only pass, do nothing
+    :param str Exception : Error description
+    '''
+    pass
+
+def get_at_content(seq, round_value = 2):
+    '''
+    Calculates the AT content of a dna sequence
+    :param int seq : sequence for calculating the AT content
+    :return float cont: AT content porcentage
+    '''
     seq = seq.upper()
 
-    #En caso que una secuencia tenga N se marca un error y se eliminan los archivo tanto el temporal como
-    # el que contendria el output
+    #Validar que la secuencia no tenga Ns
     if seq.count("N") > 0:
-        os.remove("PycharmProjects/Python_class/docs/sequences.fasta")
-        os.remove("PycharmProjects/Python_class/docs/contenido_at_output.txt")
-        raise ValueError(f'Sequence contains {seq.count("N")} N\'s')
+        raise AmbiguousBaseError(f'Sequence contains {seq.count("N")} N\'s')
 
-    cont = (seq.count("A") + seq.count("T"))/len(seq)
-    cont = (round(cont, 2))*100
-    return cont
+    # Calcula contenido de AT
+    at_content = (seq.count("A") + seq.count("T")) / len(seq)
+    at_content = (round(at_content, round_value)) * 100
 
-#Ejecutamos el metodo parse_args
+    return at_content
+
+
+########################################
+#   MAIN
+########################################
+
+# Leer argumentos
 args = parser.parse_args()
 input_rout = args.input
 output_rout = args.output
 
-#Mediante un try verificamos si existe el archivo indicado comom input y en caso contrario se solicita
-# la ruta del archivo con el que se desea trabajar
+# Validar archivo de entrada
 try:
     f = open(input_rout)
+    f.close
 except IOError:
-    print("Por favor ingrese la direccion de un input")
-    print("Ingrese la direccion de un archivo input: ")
+    print("Error! Introduzca el archivo de entrada path/filename: ")
     input_rout = input()
 
-#Abrimos el archivo indicado como input y leemos todas las lineas que hay en este mediante all_lines
-# y cerramos el archivo
+#Leer el archivo de entrada
 file = open(input_rout)
 all_lines = file.readlines()
 file.close()
 
-#Vamos a crear un archivo temporal que contenga unicamente las secuencias de DNA y ningun otro simbolo
-fasta = open("PycharmProjects/Python_class/docs/sequences.fasta", "w")
-
-#Mediante un if verificamos que el usuario haya ingresado una ruta para el archivo output (no es un argumento obligatorio)
-# en caso de no haber ingresado dicho argumento se utiliza una ruta y nombre por default
-if len(sys.argv) < 4:
-    output_rout = "PycharmProjects/Python_class/docs/contenido_at_output.txt"
-
-#Se crea y abre para escribir el archivo que se entregara como output al usuario
+# Crear archivo de resultados - en formato FastA
 output = open(output_rout,"w")
 
-#Para cada linea del archivo input proporcionado por el usuario nos quedamos unicamente con la parte de la secuencia de DNA
-# y las escribimos dentro del archivo temporal denominado sequences.fasta
+# Para cada secuencia del archivo
 for line in all_lines:
-    spl=line.split("=")
-    fasta.write(spl[1].upper().replace('"','').replace('-',''))
 
-#Se cierra el archivo que acabamos de escribir
-fasta.close()
+    spl = line.split("=")
 
-#Abrimos el archivo que acabamos de crear y leemos todas las lineas, que en este caso corresponden a la secuencia de DNA
-archivo_seq = open("PycharmProjects/Python_class/docs/sequences.fasta")
-sequences = archivo_seq.readlines()
+    # eliminar -, en la secuencia
+    sequence = spl[1].upper().replace('"','').replace('-','')
 
-#Escrbibimos la primer linea del archivo output, la cual en este caso nos indica que hay en dicho archivo
-output.write("El contenido de AT de las secuencias en su archivo input es: \n")
+    try:
+        # Obtener contenido de at
+        at_content = get_at_content(sequence)
 
-#Vamos a escribir la secuencia seguida de su contenido de AT (en porcentaje) la cual obtenemos con la funcion
-# get_at_content(seq) la que recibe como parametro la secuencia de DNA
-for seq in sequences:
-    output.write(">"+seq)
-    output.write(str(get_at_content(seq))+"%"+"\n")
+        #Guardar en formato FastA
+        output.write(">" + spl[0] + "  at: " + str(at_content) + "\n")
+        output.write(sequence)
 
-#Removemos el archivo temporal que hemos creado
-os.remove("PycharmProjects/Python_class/docs/sequences.fasta")
+    except AmbiguousBaseError as ex:
+        print('skipping invalid sequence for ' + spl[0] + ex.args[0])
 
-#Por ultimo le indicamos al usuario que el programa se ejecuto con exito y le indicamos la ruta donde este se ubica
+
 print(f"El archivo con el contenido de AT se genero con exito y lo puede encontrar en:\n{output_rout}")
