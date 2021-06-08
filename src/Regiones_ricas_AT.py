@@ -24,6 +24,9 @@ OUTPUT
         En caso de contener caracteres ajenos a las 4 bases (ATCG) se mostrara un error y
         se indicara al usuario cuales son los caracteres incorrectos
 
+Github:
+        https://github.com/JESUS-2120/Python_class/blob/master/src/Regiones_ricas_AT.py
+
 FUNCIONES
 	    ["Busqueda_Carac", "Contenido_AT"]
 	    def Busqueda_Carac(dna_seq):
