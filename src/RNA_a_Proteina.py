@@ -15,6 +15,9 @@ DESCRIPTION
 CATEGORY
         Genomic Sequence
 
+Github
+	https://github.com/JESUS-2120/Python_class/blob/master/src/RNA_a_Proteina.py
+
 INPUT
         Este programa recibe como input una secuencia de ARN
 
@@ -28,6 +31,8 @@ EXAMPLES
         Output:
                 MAMAPRTEINSTRING
 '''
+
+
 
 #Definimos un diccionario con el codigo genetico
 gencode = {
