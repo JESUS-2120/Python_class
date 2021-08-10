@@ -9,7 +9,8 @@ AUTHOR
 	La pulga se nos va al PSG :(         
 
 DESCRIPTION
-        Calculate percentage of AT on a genome sequence
+	Calculate percentage of AT on a genome sequence
+	Asi es esto calcula
 
 CATEGORY
         Genomic sequence
